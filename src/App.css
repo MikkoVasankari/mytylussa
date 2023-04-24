@@ -1,0 +1,9 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-image: url("src/assets/cave-with-man-standing-it_445983-5280.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}

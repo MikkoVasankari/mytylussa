@@ -4,13 +4,13 @@ function Affixes() {
   const [data, setData] = useState<dataItem | undefined>(undefined);
 
   interface dataItem {
-    region: String;
-    title: String;
+    region: string;
+    title: string;
     leaderboard_url: string;
     affix_details: Array<{
       description: string;
       icon: string;
-      id: Number;
+      id: number;
       name: string;
       wowhead_url: string;
     }>;
@@ -43,7 +43,7 @@ function Affixes() {
       <p> {data?.title} </p>
       <ul>
         {data?.affix_details.map((item) => (
-          <ul>
+          <ul key={item.id}>
             {item.name} <br></br>
             {item.description}
             {fetchIcon(item.icon)}

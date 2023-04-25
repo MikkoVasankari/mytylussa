@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Affixes from './components/affixes'
+import PlayerInfo from './components/playerInfo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,16 +24,7 @@ function App() {
         text here
       </p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="name">Player Realm</label>
-        <input type="text" id="Realm" />
-        <br></br>
-        <label htmlFor="name">Player Name</label>
-        <input type="text" id="name" />
-        <br></br>
-        <br></br>
-        <button >Submit</button>
-      </form>
+      <PlayerInfo/>
 
       <Affixes/>
     </>

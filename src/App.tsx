@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Affixes from './components/affixes'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,6 +34,7 @@ function App() {
         <button >Submit</button>
       </form>
 
+      <Affixes/>
     </>
   )
 }

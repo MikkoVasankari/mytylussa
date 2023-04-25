@@ -7,3 +7,7 @@
   background-size: cover;
   background-position: 100%;
 }
+ul {
+  text-align:center;
+  padding-right: 2rem;
+}

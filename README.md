@@ -1,2 +1,2 @@
 # mytylussa
-Website for everything with World of Warcraft Mythic+
+Website project for World of Warcraft Mythic+ 

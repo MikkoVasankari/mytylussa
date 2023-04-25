@@ -16,7 +16,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        text here !
+        text here
       </p>
      
       <p className="read-the-docs">

@@ -29,7 +29,7 @@ function Affixes() {
       "https://wow.zamimg.com/images/wow/icons/large/" + icon + ".jpg";
     return (
       <div>
-        <img src={response} alt={response} />
+        <img src={response} alt="Affix icon" />
       </div>
     );
   }
@@ -43,11 +43,11 @@ function Affixes() {
       <p> {data?.title} </p>
       <ul>
         {data?.affix_details.map((item) => (
-          <ul key={item.id}>
+          <li key={item.id}>
             {item.name} <br></br>
             {item.description}
             {fetchIcon(item.icon)}
-          </ul>
+          </li>
         ))}
       </ul>
 

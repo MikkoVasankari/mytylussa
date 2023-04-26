@@ -4,8 +4,26 @@ function PlayerInfo() {
   const [playerRealm, setPlayeyRealm] = useState("");
   const [playerName, setPlayerName] = useState("");
 
-  function handleSubmit(name: String, email: String) {
-    console.log(name + " " + email);
+  const [data, setData] = useState<dataItem | undefined>(undefined);
+
+  interface dataItem {
+    name: string;
+    race: string;
+    class: string;
+    faction: string;
+  }
+
+  async function fetchPlayerData(playerRealm: string, playerName: string) {
+    const response = await fetch(
+      "https://raider.io/api/v1/characters/profile?region=eu&realm="+ playerRealm +"&name=" + playerName +"&fields=gear%2Ctalents"
+    );
+    const jsonPlayerData = await response.json();
+    //console.log(jsonPlayerData);
+    setData(jsonPlayerData);
+  }
+
+  function handleSubmit(playerRealm: string, playerName: string) {
+    fetchPlayerData(playerRealm, playerName);
     setPlayeyRealm("");
     setPlayerName("");
   }
@@ -30,7 +48,11 @@ function PlayerInfo() {
         />
         <br></br>
         <br></br>
-        <button onClick={() => handleSubmit(playerRealm, playerName)}>
+        <button
+          onClick={() => {
+            handleSubmit(playerRealm, playerName);
+          }}
+        >
           Submit
         </button>
       </form>

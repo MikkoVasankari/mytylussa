@@ -10,4 +10,8 @@
 ul {
   text-align:center;
   padding-right: 2rem;
+  list-style-type: none;
+}
+li {
+  text-decoration-line: underline;
 }

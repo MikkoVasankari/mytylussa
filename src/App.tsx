@@ -6,14 +6,6 @@ function App() {
 
   return (
     <>
-    
-      <p className="read-the-docs">
-        text here
-      </p>
-     
-      <p className="read-the-docs">
-        text here
-      </p>
 
       <PlayerInfo/>
 

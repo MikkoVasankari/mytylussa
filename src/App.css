@@ -2,8 +2,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-image: url("src/assets/cave-with-man-standing-it_445983-5280.jpg");
-  background-repeat: no-repeat;
+  background-image: url("src/assets/Embers_of_Neltharion_Key_Art_4K_original.png");
+  
   background-size: cover;
   background-position: 100%;
 }
@@ -12,6 +12,7 @@ ul {
   padding-right: 2rem;
   list-style-type: none;
 }
+
 li {
   text-decoration-line: underline;
 }

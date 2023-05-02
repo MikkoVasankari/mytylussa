@@ -6,16 +6,13 @@ function PlayerInfo() {
 
   const [data, setData] = useState<dataItem | undefined>(undefined);
 
-  const querydata: string =
-    "&fields=mythic_plus_best_runs%3Aall%2Cmythic_plus_scores_by_season%3Acurrent";
-
   interface dataItem {
     name: string;
     race: string;
     class: string;
     faction: string;
     mythic_plus_scores_by_season: Array<{
-      scores: Score
+      scores: Score;
     }>;
   }
 
@@ -30,6 +27,9 @@ function PlayerInfo() {
     spec_3?: number;
   }
 
+  const querydata: string =
+    "&fields=mythic_plus_best_runs%3Aall%2Cmythic_plus_scores_by_season%3Acurrent";
+
   async function fetchPlayerData(playerRealm: string, playerName: string) {
     const response = await fetch(
       "https://raider.io/api/v1/characters/profile?region=eu&realm=" +
@@ -39,7 +39,6 @@ function PlayerInfo() {
         querydata
     );
     const jsonPlayerData = await response.json();
-    //console.log(jsonPlayerData);
     setData(jsonPlayerData);
   }
 
@@ -49,12 +48,10 @@ function PlayerInfo() {
     setPlayerName("");
   }
 
-  console.log(data?.mythic_plus_scores_by_season);
-
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="playerRealm">Player Realm</label>
+        <label className="block text-black-900 text-sm font-bold mb-2" htmlFor="playerRealm">Player Realm</label>
         <input
           type="text"
           id="playerRealm"
@@ -63,7 +60,7 @@ function PlayerInfo() {
         />
         <br></br>
         <br></br>
-        <label htmlFor="playerName">Player Name</label>
+        <label className="block text-black-900 text-sm font-bold mb-2" htmlFor="playerName">Player Name</label>
         <input
           type="text"
           id="playerName"
@@ -72,32 +69,57 @@ function PlayerInfo() {
         />
         <br></br>
         <br></br>
-        <button
+        <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={() => {
             handleSubmit(playerRealm, playerName);
           }}
         >
           Submit
         </button>
+        
       </form>
+      <br></br>
       
-      <div>
+      <div className="flex flex-row justify-center">
+        <div className="box-border rounded-lg h-18 w-32 p-4 border-4 border-indigo-500">
+          <p>All</p>
+          {data?.mythic_plus_scores_by_season[0].scores.all}
+        </div>
 
-          { data?.mythic_plus_scores_by_season[0].scores.all }
-          <p>dps</p>
-          { data?.mythic_plus_scores_by_season[0].scores.dps }
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
+          <p>Dps</p>
+          {data?.mythic_plus_scores_by_season[0].scores.dps}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>healer</p>
-          { data?.mythic_plus_scores_by_season[0].scores.healer }
+          {data?.mythic_plus_scores_by_season[0].scores.healer}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>tank</p>
-          { data?.mythic_plus_scores_by_season[0].scores.tank }
+          {data?.mythic_plus_scores_by_season[0].scores.tank}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>spec_0</p>
-          { data?.mythic_plus_scores_by_season[0].scores.spec_0 }
+          {data?.mythic_plus_scores_by_season[0].scores.spec_0}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>spec_1</p>
-          { data?.mythic_plus_scores_by_season[0].scores.spec_1}
+          {data?.mythic_plus_scores_by_season[0].scores.spec_1}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>scep_02</p>
-          { data?.mythic_plus_scores_by_season[0].scores.spec_2 }
+          {data?.mythic_plus_scores_by_season[0].scores.spec_2}
+        </div>
+
+        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
           <p>scep_03</p>
-          { data?.mythic_plus_scores_by_season[0].scores.spec_3 }
+          {data?.mythic_plus_scores_by_season[0].scores.spec_3}
+        </div>
 
       </div>
 

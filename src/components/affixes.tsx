@@ -28,7 +28,7 @@ function Affixes() {
     const response =
       "https://wow.zamimg.com/images/wow/icons/large/" + icon + ".jpg";
     return (
-      <div>
+      <div className="flex justify-center">
         <img src={response} alt="Affix icon" />
       </div>
     );
@@ -39,7 +39,7 @@ function Affixes() {
   }, []);
 
   return (
-    <div>
+    <div >
       <p> {data?.title} </p>
       <ul>
         {data?.affix_details.map((item) => (

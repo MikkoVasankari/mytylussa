@@ -11,6 +11,7 @@ function PlayerInfo() {
     race: string;
     class: string;
     faction: string;
+    mythic_plus_best_runs: Array<{}>;
     mythic_plus_scores_by_season: Array<{
       scores: Score;
     }>;
@@ -28,7 +29,7 @@ function PlayerInfo() {
   }
 
   const querydata: string =
-    "&fields=mythic_plus_best_runs%3Aall%2Cmythic_plus_scores_by_season%3Acurrent";
+    "&fields=mythic_plus_best_runs%3Aall%2Cmythic_plus_scores_by_season%3Acurrent%2Cmythic_plus_ranks";
 
   async function fetchPlayerData(playerRealm: string, playerName: string) {
     const response = await fetch(
@@ -39,6 +40,7 @@ function PlayerInfo() {
         querydata
     );
     const jsonPlayerData = await response.json();
+    console.log(jsonPlayerData);
     setData(jsonPlayerData);
   }
 
@@ -51,8 +53,14 @@ function PlayerInfo() {
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
-        <label className="block text-black-900 text-sm font-bold mb-2" htmlFor="playerRealm">Player Realm</label>
+        <label
+          className="block text-black-900 text-sm font-bold mb-2"
+          htmlFor="playerRealm"
+        >
+          Player Realm
+        </label>
         <input
+          required
           type="text"
           id="playerRealm"
           value={playerRealm}
@@ -60,8 +68,14 @@ function PlayerInfo() {
         />
         <br></br>
         <br></br>
-        <label className="block text-black-900 text-sm font-bold mb-2" htmlFor="playerName">Player Name</label>
+        <label
+          className="block text-black-900 text-sm font-bold mb-2"
+          htmlFor="playerName"
+        >
+          Player Name
+        </label>
         <input
+          required
           type="text"
           id="playerName"
           value={playerName}
@@ -69,17 +83,19 @@ function PlayerInfo() {
         />
         <br></br>
         <br></br>
-        <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        <button
+          className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={() => {
-            handleSubmit(playerRealm, playerName);
+            if (playerName != "" && playerRealm != "") {
+              handleSubmit(playerRealm, playerName);
+            }
           }}
         >
           Submit
         </button>
-        
       </form>
       <br></br>
-      
+
       <div className="flex flex-row justify-center">
         <div className="box-border rounded-lg h-18 w-32 p-4 border-4 border-indigo-500">
           <p>All</p>
@@ -120,7 +136,6 @@ function PlayerInfo() {
           <p>scep_03</p>
           {data?.mythic_plus_scores_by_season[0].scores.spec_3}
         </div>
-
       </div>
 
       <p>JOU</p>

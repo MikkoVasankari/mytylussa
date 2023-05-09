@@ -6,10 +6,9 @@
 }
 
 body, html {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("src/assets/Embers_of_Neltharion_Key_Art_4K_original.png");
+  background: url("src/assets/Embers_of_Neltharion_Key_Art_4K_original.png") no-repeat center center fixed;
   background-size: cover;
+  background-position: fixed;
 }
 
 

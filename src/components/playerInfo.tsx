@@ -95,50 +95,49 @@ function PlayerInfo() {
         </button>
       </form>
       <br></br>
+      <div className="bg-gray-800 box-border rounded-lg  w-128 p-4 border-4 border-red-800 ">
+        <div className=" flex flex-row justify-center">
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>All</p>
+            {data?.mythic_plus_scores_by_season[0].scores.all}
+          </div>
 
-      <div className="flex flex-row justify-center">
-        <div className="box-border rounded-lg h-18 w-32 p-4 border-4 border-indigo-500">
-          <p>All</p>
-          {data?.mythic_plus_scores_by_season[0].scores.all}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>Dps</p>
+            {data?.mythic_plus_scores_by_season[0].scores.dps}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>Dps</p>
-          {data?.mythic_plus_scores_by_season[0].scores.dps}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>healer</p>
+            {data?.mythic_plus_scores_by_season[0].scores.healer}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>healer</p>
-          {data?.mythic_plus_scores_by_season[0].scores.healer}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>tank</p>
+            {data?.mythic_plus_scores_by_season[0].scores.tank}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>tank</p>
-          {data?.mythic_plus_scores_by_season[0].scores.tank}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>spec_0</p>
+            {data?.mythic_plus_scores_by_season[0].scores.spec_0}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>spec_0</p>
-          {data?.mythic_plus_scores_by_season[0].scores.spec_0}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>spec_1</p>
+            {data?.mythic_plus_scores_by_season[0].scores.spec_1}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>spec_1</p>
-          {data?.mythic_plus_scores_by_season[0].scores.spec_1}
-        </div>
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>scep_02</p>
+            {data?.mythic_plus_scores_by_season[0].scores.spec_2}
+          </div>
 
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>scep_02</p>
-          {data?.mythic_plus_scores_by_season[0].scores.spec_2}
-        </div>
-
-        <div className="box-border h-18 w-32 p-4 border-4 border-pink-500">
-          <p>scep_03</p>
-          {data?.mythic_plus_scores_by_season[0].scores.spec_3}
+          <div className="bg-gray-700 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
+            <p>scep_03</p>
+            {data?.mythic_plus_scores_by_season[0].scores.spec_3}
+          </div>
         </div>
       </div>
-
-      <p>JOU</p>
     </div>
   );
 }

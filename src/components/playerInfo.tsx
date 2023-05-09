@@ -98,7 +98,7 @@ function PlayerInfo() {
       <div className="flex justify-center items-center">
         <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
           <div className="flex flex-row justify-center items-center">
-
+            
             <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
               <p>All</p>
               {data?.mythic_plus_scores_by_season[0].scores.all}

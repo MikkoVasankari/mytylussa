@@ -2,22 +2,60 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  
 }
 
-body, html {
-  background: url("src/assets/Embers_of_Neltharion_Key_Art_4K_original.png") no-repeat center center fixed;
+body,
+html {
+  background: url("src/assets/Embers_of_Neltharion_Key_Art_4K_original.png")
+    no-repeat center center fixed;
   background-size: cover;
   background-position: fixed;
 }
 
-
 ul {
-  text-align:center;
+  text-align: center;
   padding-right: 2rem;
   list-style-type: none;
 }
 
 li {
   text-decoration-line: underline;
+}
+
+.affix {
+  width: 200px;
+  height: 70px;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.affix::before,
+.affix::after {
+  --scale: 0;
+
+  transform: translateX(-50%) translateY(var(--translate-y, 0))
+    scale(var(--scale));
+  transition: 150ms transform;
+  transform-origin: top center;
+}
+
+.affix::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  text-align: center;
+  width: max-content;
+  max-width: 200px;
+}
+
+.affix:hover::before,
+.affix:hover::after {
+  position: absolute;
+  --scale: 1;
+  background-color: #374151;
+
+  --translate-y: 100px;
 }

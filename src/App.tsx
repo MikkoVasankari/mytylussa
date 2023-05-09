@@ -1,17 +1,15 @@
-import './App.css'
-import Affixes from './components/affixes'
-import PlayerInfo from './components/playerInfo'
+import "./App.css";
+import Affixes from "./components/affixes";
+import PlayerInfo from "./components/playerInfo";
 
 function App() {
-
   return (
     <>
+      <Affixes />
 
-      <PlayerInfo/>
-
-      <Affixes/>
+      <PlayerInfo />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -39,19 +39,22 @@ function Affixes() {
   }, []);
 
   return (
-    <div >
-      <p> {data?.title} </p>
+    <div>
       <ul>
-        {data?.affix_details.map((item) => (
-          <li key={item.id}>
-            {item.name} <br></br>
-            {item.description}
-            {fetchIcon(item.icon)}
-          </li>
-        ))}
+        <div className=" flex flex-row justify-center p-5">
+          {data?.affix_details.map((item) => (
+            <div className=" p-5">
+              <li key={item.id}>
+                <div className="affix" data-tooltip={item.description}> {fetchIcon(item.icon)} </div>
+                {item.name}
+              </li>
+            </div>
+          ))}
+        </div>
       </ul>
 
       <a href={data?.leaderboard_url}>Mythic+ Leaderboard</a>
+      <br></br>
     </div>
   );
 }

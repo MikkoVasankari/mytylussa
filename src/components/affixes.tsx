@@ -43,9 +43,12 @@ function Affixes() {
       <ul>
         <div className=" flex flex-row justify-center p-5">
           {data?.affix_details.map((item) => (
-            <div className=" p-5">
+            <div className="p-5" key={item.id}>
               <li key={item.id}>
-                <div className="affix" data-tooltip={item.description}> {fetchIcon(item.icon)} </div>
+                <div className="affix" data-tooltip={item.description}>
+                  {" "}
+                  {fetchIcon(item.icon)}{" "}
+                </div>
                 {item.name}
               </li>
             </div>

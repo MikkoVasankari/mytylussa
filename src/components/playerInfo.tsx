@@ -13,7 +13,18 @@ function PlayerInfo() {
     active_spec_name: string;
     faction: string;
     realm: string;
-    mythic_plus_best_runs: Array<{}>;
+    mythic_plus_best_runs: Array<{
+      affixes: Array<{
+        icon: string;
+        id: number;
+        name: string;
+      }>;
+      clear_time_ms: number;
+      dungeon: string;
+      mythic_level: string;
+      num_keystone_upgrades: number;
+      score: number;
+    }>;
     mythic_plus_scores_by_season: Array<{
       scores: Score;
     }>;
@@ -51,6 +62,7 @@ function PlayerInfo() {
     setPlayeyRealm("");
     setPlayerName("");
   }
+ 
 
   return (
     <div>
@@ -97,19 +109,17 @@ function PlayerInfo() {
         </button>
       </form>
 
-        <div>
-
-          { data?.name }-{ data?.realm }  {" "}
-          { data?.race }  {data?.active_spec_name } { data?.class }
-
-        </div>
+      <div>
+        {data?.name}-{data?.realm} {data?.race} {data?.active_spec_name}{" "}
+        {data?.class}
+      </div>
 
 
+      
 
       <div className="flex justify-center items-center">
         <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
           <div className="flex flex-row justify-center items-center">
-
             <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
               <p>All</p>
               {data?.mythic_plus_scores_by_season[0].scores.all}
@@ -149,18 +159,37 @@ function PlayerInfo() {
               <p>scep_03</p>
               {data?.mythic_plus_scores_by_season[0].scores.spec_3}
             </div>
-
           </div>
         </div>
       </div>
 
-          <div>
+      <div>
+        Tänne sit myty runit
+        <ul>
+          <div className=" flex justify-center ">
+            {data?.mythic_plus_best_runs.map((item , id) => (
+              <div className="p-5" key={id}>
+                <li>
+                  <div>
+                    {item.dungeon}
+                    {" "}
+                    {item.mythic_level}
+                    {" "}
+                    {item.num_keystone_upgrades}
+                    {" "}
+                    {item.affixes.map((affix) => (
+                      <div key={affix.id}>
+                        {affix.name}
+                      </div>
+                    ))}
 
-            Tänne sit myty runit
-
+                  </div>
+                </li>
+              </div>
+            ))}
           </div>
-
-
+        </ul>
+      </div>
     </div>
   );
 }

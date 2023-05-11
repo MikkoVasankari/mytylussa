@@ -37,6 +37,8 @@ function Affixes() {
   useEffect(() => {
     fetchJSONData();
   }, []);
+  
+  // <a href={data?.leaderboard_url}>Mythic+ Leaderboard</a> 
 
   return (
     <div>
@@ -55,8 +57,8 @@ function Affixes() {
           ))}
         </div>
       </ul>
-
-      <a href={data?.leaderboard_url}>Mythic+ Leaderboard</a>
+    
+      <br></br>
       <br></br>
     </div>
   );

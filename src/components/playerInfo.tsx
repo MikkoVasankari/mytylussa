@@ -10,7 +10,9 @@ function PlayerInfo() {
     name: string;
     race: string;
     class: string;
+    active_spec_name: string;
     faction: string;
+    realm: string;
     mythic_plus_best_runs: Array<{}>;
     mythic_plus_scores_by_season: Array<{
       scores: Score;
@@ -40,8 +42,8 @@ function PlayerInfo() {
         querydata
     );
     const jsonPlayerData = await response.json();
-    console.log(jsonPlayerData);
     setData(jsonPlayerData);
+    console.log(jsonPlayerData);
   }
 
   function handleSubmit(playerRealm: string, playerName: string) {
@@ -52,6 +54,7 @@ function PlayerInfo() {
 
   return (
     <div>
+      <p>Please enter your realm and character name to show Mythic+ scores</p>
       <form onSubmit={(e) => e.preventDefault()}>
         <label
           className="block text-black-900 text-sm font-bold mb-2"
@@ -64,9 +67,8 @@ function PlayerInfo() {
           id="playerRealm"
           value={playerRealm}
           onChange={(e) => setPlayeyRealm(e.target.value)}
-          className="shadow appearance-none border border-red-500 rounded  py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-gray-700 shadow appearance-none border border-red-500 rounded  py-2 px-2 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <br></br>
         <br></br>
         <label
           className="block text-black-900 text-sm font-bold mb-2"
@@ -79,7 +81,7 @@ function PlayerInfo() {
           id="playerName"
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}
-          className="shadow appearance-none border border-red-500 rounded  py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-gray-700 shadow appearance-none border border-red-500 rounded  py-2 px-2 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline"
         />
         <br></br>
         <br></br>
@@ -95,10 +97,19 @@ function PlayerInfo() {
         </button>
       </form>
 
+        <div>
+
+          { data?.name }-{ data?.realm }  {" "}
+          { data?.race }  {data?.active_spec_name } { data?.class }
+
+        </div>
+
+
+
       <div className="flex justify-center items-center">
         <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
           <div className="flex flex-row justify-center items-center">
-            
+
             <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
               <p>All</p>
               {data?.mythic_plus_scores_by_season[0].scores.all}
@@ -142,6 +153,13 @@ function PlayerInfo() {
           </div>
         </div>
       </div>
+
+          <div>
+
+            Tänne sit myty runit
+
+          </div>
+
 
     </div>
   );

@@ -19,9 +19,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  text-decoration-line: underline;
-}
 
 .affix {
   width: 200px;

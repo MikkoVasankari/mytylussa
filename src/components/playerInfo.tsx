@@ -62,11 +62,13 @@ function PlayerInfo() {
     setPlayeyRealm("");
     setPlayerName("");
   }
- 
 
   return (
     <div>
-      <p>Please enter your realm and character name to show Mythic+ scores</p>
+      <p>
+        Please enter your realm and character name to show Mythic+ scores and
+        best runs
+      </p>
       <form onSubmit={(e) => e.preventDefault()}>
         <label
           className="block text-black-900 text-sm font-bold mb-2"
@@ -110,12 +112,10 @@ function PlayerInfo() {
       </form>
 
       <div>
+        <br></br>
         {data?.name}-{data?.realm} {data?.race} {data?.active_spec_name}{" "}
         {data?.class}
       </div>
-
-
-      
 
       <div className="flex justify-center items-center">
         <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
@@ -163,33 +163,44 @@ function PlayerInfo() {
         </div>
       </div>
 
-      <div>
-        Tänne sit myty runit
-        <ul>
-          <div className=" flex justify-center ">
-            {data?.mythic_plus_best_runs.map((item , id) => (
-              <div className="p-5" key={id}>
-                <li>
-                  <div>
-                    {item.dungeon}
-                    {" "}
-                    {item.mythic_level}
-                    {" "}
-                    {item.num_keystone_upgrades}
-                    {" "}
-                    {item.affixes.map((affix) => (
-                      <div key={affix.id}>
-                        {affix.name}
-                      </div>
-                    ))}
+      <div className="flex justify-center ">
 
-                  </div>
-                </li>
+        <table className="inline-grid justify-center ">
+
+          <thead className="">
+            <tr>
+              <th className="bg-red-500 text-left ps-10">Dungeons</th>
+              <th className="bg-blue-400 ps-28">Mythic level</th>
+              <th className="bg-yellow-400 ps-52">affixes</th>
+            </tr>
+          </thead>
+
+          <tbody className="">
+              <div className="">
+                {data?.mythic_plus_best_runs.map((item, id) => (
+                  <tr className="p-4" key={id}>
+                    <td className="bg-red-500 text-left">{item.dungeon} </td>
+
+                    <td className="bg-blue-400 ps-28">{item.mythic_level} </td>
+
+                    <td className="bg-green-400 pe-20">{item.num_keystone_upgrades} </td>
+
+                    {item.affixes.map((affix, id) => (
+                      <td className="bg-yellow-400 pe-20" key={id}>
+                        {affix.name}{" "}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
               </div>
-            ))}
-          </div>
-        </ul>
+          </tbody>
+
+        </table>
+
       </div>
+
+
+
     </div>
   );
 }

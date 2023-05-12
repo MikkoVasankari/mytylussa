@@ -63,6 +63,16 @@ function PlayerInfo() {
     setPlayerName("");
   }
 
+  function mythicKeystoneUpgradeToPlusSign(level: number) {
+    let plusSigns = "";
+
+    for (let i = 0; i < level; i++) {
+      plusSigns += "+";
+    }
+    
+    return plusSigns;
+  }
+
   return (
     <div>
       <p>
@@ -164,43 +174,40 @@ function PlayerInfo() {
       </div>
 
       <div className="flex justify-center ">
+        <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
+          <table className="inline-grid justify-center ">
+            <thead className=" bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
+              <tr>
+                <th className="text-left ps-10">Dungeons</th>
+                <th className="ps-28">Mythic level</th>
+                <th className="400 ps-52">Affixes</th>
+              </tr>
+            </thead>
 
-        <table className="inline-grid justify-center ">
+            <tbody className="bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800">
+              {data?.mythic_plus_best_runs.map((item, id) => (
+                <tr className="" key={id}>
+                  <td className="text-left">{item.dungeon} </td>
 
-          <thead className="">
-            <tr>
-              <th className="bg-red-500 text-left ps-10">Dungeons</th>
-              <th className="bg-blue-400 ps-28">Mythic level</th>
-              <th className="bg-yellow-400 ps-52">affixes</th>
-            </tr>
-          </thead>
+                  <td className="ps-28">{item.mythic_level} </td>
 
-          <tbody className="">
-              <div className="">
-                {data?.mythic_plus_best_runs.map((item, id) => (
-                  <tr className="p-4" key={id}>
-                    <td className="bg-red-500 text-left">{item.dungeon} </td>
+                  <td className="pe-20">
+                    {mythicKeystoneUpgradeToPlusSign(
+                      item.num_keystone_upgrades
+                    )}{" "}
+                  </td>
 
-                    <td className="bg-blue-400 ps-28">{item.mythic_level} </td>
-
-                    <td className="bg-green-400 pe-20">{item.num_keystone_upgrades} </td>
-
-                    {item.affixes.map((affix, id) => (
-                      <td className="bg-yellow-400 pe-20" key={id}>
-                        {affix.name}{" "}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </div>
-          </tbody>
-
-        </table>
-
+                  {item.affixes.map((affix, id) => (
+                    <td className=" pe-20" key={id}>
+                      {affix.name}{" "}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-
-
-
     </div>
   );
 }

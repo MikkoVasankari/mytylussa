@@ -87,8 +87,8 @@ function PlayerInfo() {
       );
     } else {
       return (
-        <div className=" bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
-          {category}
+        <div>
+          
         </div>
       );
     }

@@ -1,0 +1,60 @@
+{
+  "Death_Knight": [{
+    "blood": "tank",
+    "frost": "dps",
+    "unholy": "dps"
+  }],
+
+  "Demon_Hunter": [{
+    "vengeance": "tank",
+    "havoc": "dps"
+  }],
+
+  "Druid": [{
+    "restoration": "healer",
+    "guardian": "tank",
+    "balance": "dps",
+    "feral": "dps"
+  }],
+  "Evoker": [{
+    "devastation": "dps",
+    "preservation": "healer"
+  }],
+  "Mage": [{
+    "arcane": "dps",
+    "fire": "dps",
+    "frost": "dps"
+    }],
+  "Monk": [{
+    "brewmaster": "tank",
+    "mistweaver": "healer",
+    "windwalker": "dps"
+    }],
+  "Paladin": [{
+    "protection": "tank",
+    "holy": "healer",
+    "retribution": "dps"
+    }],
+  "Rogue": [{
+    "assasination": "dps",
+    "outlaw": "dps",
+    "subtlety": "dps"
+    }],
+  "Shaman": [{
+    "elemental": "dps",
+    "enhancement":"dps",
+    "restoration": "healer"
+    }],
+  "Warlock":[{
+    "affliction": "dps",
+    "demonology": "dps",
+    "destruction": "dps"
+    }],
+
+  "Warrior": [{
+    "arms": "dps",
+    "fury": "dps",
+    "protection": "tank"
+    }]
+}
+

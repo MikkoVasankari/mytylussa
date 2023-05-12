@@ -1,11 +1,15 @@
 import { useState } from "react";
-
+import classes from "../../data/classes.json";
+ 
 function PlayerInfo() {
+
+  console.log(classes);
+
   const [playerRealm, setPlayeyRealm] = useState("");
   const [playerName, setPlayerName] = useState("");
 
   const [data, setData] = useState<dataItem | undefined>(undefined);
-
+  
   interface dataItem {
     name: string;
     race: string;
@@ -69,8 +73,25 @@ function PlayerInfo() {
     for (let i = 0; i < level; i++) {
       plusSigns += "+";
     }
-    
+
     return plusSigns;
+  }
+
+  function checkIfMythicPlusScoreZero(category: string, score?: number) {
+    if (score && typeof score === "number" && score > 0) {
+      return (
+        <div className=" bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
+          <p>{category}</p>
+          {data?.mythic_plus_scores_by_season[0].scores.all}
+        </div>
+      );
+    } else {
+      return (
+        <div className=" bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
+          {category}
+        </div>
+      );
+    }
   }
 
   return (
@@ -130,25 +151,15 @@ function PlayerInfo() {
       <div className="flex justify-center items-center">
         <div className="max-w-fit bg-gray-800 m-2 box-border rounded-lg p-4 border-4 border-red-800 ">
           <div className="flex flex-row justify-center items-center">
-            <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800 ">
-              <p>All</p>
-              {data?.mythic_plus_scores_by_season[0].scores.all}
-            </div>
+            
+            {checkIfMythicPlusScoreZero("All",data?.mythic_plus_scores_by_season[0].scores.all)}
+           
+            {checkIfMythicPlusScoreZero("Dps",data?.mythic_plus_scores_by_season[0].scores.dps)}
 
-            <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
-              <p>Dps</p>
-              {data?.mythic_plus_scores_by_season[0].scores.dps}
-            </div>
+            {checkIfMythicPlusScoreZero("Healer",data?.mythic_plus_scores_by_season[0].scores.healer)}
 
-            <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
-              <p>healer</p>
-              {data?.mythic_plus_scores_by_season[0].scores.healer}
-            </div>
 
-            <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
-              <p>tank</p>
-              {data?.mythic_plus_scores_by_season[0].scores.tank}
-            </div>
+            {checkIfMythicPlusScoreZero("Tank",data?.mythic_plus_scores_by_season[0].scores.tank)}
 
             <div className="bg-gray-700 m-2 box-border rounded-lg h-18 w-32 p-4 border-4 border-red-800">
               <p>spec_0</p>
@@ -180,7 +191,7 @@ function PlayerInfo() {
               <tr>
                 <th className="text-left ps-10">Dungeons</th>
                 <th className="ps-28">Mythic level</th>
-                <th className="400 ps-52">Affixes</th>
+                <th className="400 ps-52">Keystone Affixes</th>
               </tr>
             </thead>
 
